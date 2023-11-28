@@ -2,16 +2,7 @@ package exercise01;
 import java.util.Date;
 
 public class Member{
-	
-	String name;
-	float weight;
-	float Startweight;
-	float Length;
-	String gender;
-	int age;
-	int exerciseDays;
-	Date startDate;
-	
+		
 	// 회원 가입 시 넣어지는 정보들
 	String memberName;	// 이름
 	String memberGender;// 성별
