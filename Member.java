@@ -1,4 +1,5 @@
 package teamProject;
+
 import java.util.Date;
 
 public class Member{
@@ -32,7 +33,7 @@ public class Member{
 	
 	
 	public Member(String name, Date startDate) {
-		this.name = name;
+		this.memberName = name;
 		this.startDate = startDate;
 	}
 	
