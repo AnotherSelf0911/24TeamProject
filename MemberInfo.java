@@ -10,7 +10,5 @@ public class MemberInfo extends SignUp {
 	}
 	
 	
-	public void addNewMemberList(Member member) {
-		memberList.add(member);
-	}
+	
 }
