@@ -1,4 +1,4 @@
-package exercise01;
+package teamProject;
 
 import java.util.Scanner;
 
