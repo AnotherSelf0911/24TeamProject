@@ -73,6 +73,7 @@ public class SignUp extends Member{ // Member의 멤버변수 가져오기
 		
 		memberList.add(newMember);
 		
+		
 	} // SignUp1();
 	
 	public boolean IDdupCheck(String tempID) {	// ArrayList 안에 있는 ID 중복 체크하는 메서드
@@ -123,8 +124,8 @@ public class SignUp extends Member{ // Member의 멤버변수 가져오기
 		}
 	} // getType();
 	
-	public void addNewMemberList(Member member) {
-		memberList.add(member);
-	}
-	
+	public void setMemberList(List<Member> memberList) {
+        this.memberList = memberList;
+        // 이후에 memberList를 사용할 수 있음
+    }
 }
