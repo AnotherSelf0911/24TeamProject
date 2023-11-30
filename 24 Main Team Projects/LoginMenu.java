@@ -9,14 +9,14 @@ public class LoginMenu {
 	List<Member> memberList; 
 	
 	public LoginMenu() {
-		boolean run = true;
-		System.out.println("1. 회원가입");
-		System.out.println("2. 로그인");
-		System.out.println("3. 종료");
-		System.out.print("선택 > ");
-		int select = scan.nextInt();
 		
+		boolean run = true;
 		while(run) {
+			System.out.println("1. 회원가입");
+			System.out.println("2. 로그인");
+			System.out.println("3. 종료");
+			System.out.print("선택 > ");
+			int select = scan.nextInt();
 			switch(select) {
 			case 1:
 				SignUp signUp = new SignUp();
