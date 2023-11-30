@@ -1,20 +1,25 @@
 package teamProject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 
-public class SignUp extends Member { // Member의 멤버변수 가져오기
+public class SignUp extends Member{ // Member의 멤버변수 가져오기
+
+
 	Scanner scan = new Scanner(System.in);
 	boolean idrun = true; // 아이디 입력 반복문
 	boolean pwrun = true; // 비밀번호 입력 반복문
 	
-	public ArrayList<Member> memberList = new ArrayList<Member>(); // ArrayList에 담기 위해 ArrayList 입력
+	public List<Member> memberList = new ArrayList<Member>(); // ArrayList에 담기 위해 ArrayList 입력
 	
 	public SignUp() {
-		// TODO Auto-generated constructor stub
+		
 	}
+	
 	public void SignUp1() { // Main에서 실행 시킬 메서드
 		
 		System.out.println("-----회원가입-----");
@@ -61,10 +66,12 @@ public class SignUp extends Member { // Member의 멤버변수 가져오기
 		System.out.print("키를 입력해주세요 (소수점 입력 가능) : ");	// float으로 키 입력 받기
 		memberLength = scan.nextFloat();
 		
-		SignUp mem = new SignUp();
+		float memberStartWeight = memberWeight;
+		Date startDate = new Date();
 		// 하고싶은게 ArrayList Member 안에 저 위에 있는 정보들 다 넣고 회원 가입 완료 출력 시키기.
+		Member newMember = new Member(memberName, memberGender, memberAge, memberStartWeight, memberWeight, memberLength, startDate, memberID, memberPW);
 		
-		addNewMemberList();
+		memberList.add(newMember);
 		
 	} // SignUp1();
 	

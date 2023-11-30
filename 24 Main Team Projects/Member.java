@@ -24,18 +24,33 @@ public class Member{
 	float memberBMI; // BMI 수치
 	
 	
+
+	public Member() {
+		// TODO Auto-generated constructor stub
+	}
 	
-	
-	
+	public Member(String memberName, String memberGender, int memberAge, float startweight, float memberWeight,
+			float memberLength, Date startDate, String memberID, String memberPW) {
+		this.memberName = memberName;
+		this.memberGender = memberGender;
+		this.memberAge = memberAge;
+		Startweight = startweight;
+		this.memberWeight = memberWeight;
+		this.memberLength = memberLength;
+		this.startDate = startDate;
+		this.memberID = memberID;
+		this.memberPW = memberPW;
+	}
+
+
+
+
+
 	public String getMemberID() {
 		return memberID;
 	}
 	
-	
-	public Member(String name, Date startDate) {
-		this.memberName = name;
-		this.startDate = startDate;
-	}
+
 	
 	
 }
