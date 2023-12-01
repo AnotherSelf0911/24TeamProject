@@ -24,7 +24,6 @@ public class LoginMenu {
 				signUp.SignUp1();
 				break;
 			case 2:
-				signUp.setMemberList(memberList);
 				System.out.print("아이디를 입력해주세요 : ");
 				String tempID = scan.next();
 				System.out.print("비밀번호를 입력해주세요 : ");
