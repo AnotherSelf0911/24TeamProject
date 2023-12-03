@@ -1,1 +1,46 @@
+package Subject01;
+
+public class User {
+
+	private String name; // 이름
+	private String phoneNumber; // 전화번호
+	private String email; // 이메일
+	
+	public User(String name, String phoneNumber, String email) {
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+	} // 생성자
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return "Name : " + name + "\nPhone Number : " + phoneNumber +
+				"\nE-Mail : " + email;
+	}	
+	
+}
 
