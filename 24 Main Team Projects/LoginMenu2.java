@@ -74,36 +74,24 @@ public class LoginMenu2 {
 		
 		loginButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFrame login = new JFrame();
-				login.setSize(200, 150);
-				login.setVisible(false);
 				
 				String tempID = idTextField.getText();
 				char[] tempPWCharArray = pwTextField.getPassword();
 				String tempPW = new String(tempPWCharArray);
 				
 				if(masterLoginCheck(tempID, tempPW) == true) {
-					JLabel loginLabel = new JLabel("마스터 계정 로그인 성공");
-					loginLabel.setBounds(100, 75, 200, 0);
-					login.add(loginLabel);
-					login.setVisible(true);
 					new MainMenu();
+					JOptionPane.showMessageDialog(null, "마스터 계정 로그인 성공", "로그인 확인", JOptionPane.PLAIN_MESSAGE);
 					loginFrame.dispose();
 				}
 				else {
 					if(loginCheck(tempID, tempPW) == true) {
-						JLabel loginLabel = new JLabel("로그인 성공");
-						loginLabel.setBounds(100, 75, 100, 0);
-						login.add(loginLabel);
-						login.setVisible(true);
 						new MainMenu();
+						JOptionPane.showMessageDialog(null, "로그인 성공", "로그인 확인", JOptionPane.PLAIN_MESSAGE);
 						loginFrame.dispose();
 					}
 					else {
-						JLabel loginLabel = new JLabel("로그인 실패");
-						loginLabel.setBounds(100, 75, 100, 0);
-						login.add(loginLabel);
-						login.setVisible(true);
+						JOptionPane.showMessageDialog(null, "로그인 실패", "로그인 확인", JOptionPane.ERROR_MESSAGE);
 					}
 				}
 				
