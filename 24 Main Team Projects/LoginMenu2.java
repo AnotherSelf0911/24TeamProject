@@ -14,11 +14,10 @@ public class LoginMenu2 {
 	List<Member> memberList = new ArrayList<Member>(); 
 	SignUp signUp = new SignUp();
 	Member tempMember = new Member();
-	
+	Member adminMember;
 	MasterAccount admin;
 	
 	
-
 	public LoginMenu2() {
 		
 		try {
@@ -28,7 +27,7 @@ public class LoginMenu2 {
             e.printStackTrace();
         }
 		
-		Member adminMember = new Member(admin.getMemberName(), admin.getMemberGender(), admin.getMemberAge(), admin.getStartweight(), admin.getMemberWeight(), 
+		adminMember = new Member(admin.getMemberName(), admin.getMemberGender(), admin.getMemberAge(), admin.getStartweight(), admin.getMemberWeight(), 
 				admin.getMemberLength(), admin.getStartDate(), admin.getMemberID(), admin.getMemberPW(), admin.getDays(), admin.getExerciseDays(), 
 				admin.getMemberGrade(), admin.getMemberExerciseDiff(), admin.getMemberBMI());
 		
@@ -133,6 +132,7 @@ public class LoginMenu2 {
 	
 	boolean masterLoginCheck(String tempID, String tempPW) {
 		if(admin.memberID.equals(tempID) && admin.memberPW.equals(tempPW)) {
+			tempMember = adminMember;
 			return true;
 		}
 		return false;
