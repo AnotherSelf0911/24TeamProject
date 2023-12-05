@@ -3,6 +3,7 @@ package teamProject;
 import java.awt.Font;
 
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,13 +11,28 @@ import javax.swing.*;
 
 public class LoginMenu2 {
 	
-	List<Member> memberList; 
+	List<Member> memberList = new ArrayList<Member>(); 
 	SignUp signUp = new SignUp();
 	Member tempMember = new Member();
+	
+	MasterAccount admin;
 	
 	
 
 	public LoginMenu2() {
+		
+		try {
+            admin = new MasterAccount();
+        } catch (Exception e) {
+            // 예외 처리 로직 추가
+            e.printStackTrace();
+        }
+		
+		Member adminMember = new Member(admin.getMemberName(), admin.getMemberGender(), admin.getMemberAge(), admin.getStartweight(), admin.getMemberWeight(), 
+				admin.getMemberLength(), admin.getStartDate(), admin.getMemberID(), admin.getMemberPW(), admin.getDays(), admin.getExerciseDays(), 
+				admin.getMemberGrade(), admin.getMemberExerciseDiff(), admin.getMemberBMI());
+		
+		memberList.add(adminMember);
 		
 		JFrame loginFrame = new JFrame("로그인 창"); // 프레임 생성
 		Font defaultFont = new Font("", Font.PLAIN, 14);
@@ -116,14 +132,10 @@ public class LoginMenu2 {
 	}
 	
 	boolean masterLoginCheck(String tempID, String tempPW) {
-		if(signUp.masterAccount.memberID.equals(tempID) && signUp.masterAccount.memberPW.equals(tempPW)) {
-			tempMember = signUp.masterAccount;
+		if(admin.memberID.equals(tempID) && admin.memberPW.equals(tempPW)) {
 			return true;
 		}
 		return false;
 	}
-	
-	
-	
 	
 }

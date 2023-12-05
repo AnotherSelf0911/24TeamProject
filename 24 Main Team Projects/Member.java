@@ -8,10 +8,10 @@ public class Member{
 	String memberName;	// 이름
 	String memberGender;// 성별
 	int memberAge;		// 나이
-	float Startweight;  // 첫날 몸무게
+	float startWeight;  // 첫날 몸무게
 	float memberWeight; // 몸무게
 	float memberLength; // 키
-	Date startDate;		// 시작일 (회원가입일)
+	String startDate;	// 시작일 (회원가입일)
 	String memberID;	// 회원 아이디
 	String memberPW;	// 회원 비밀번호
 	
@@ -29,22 +29,28 @@ public class Member{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Member(String memberName, String memberGender, int memberAge, float startweight, float memberWeight,
-			float memberLength, Date startDate, String memberID, String memberPW) {
+	
+	public Member(String memberName, String memberGender, int memberAge, float startWeight, float memberWeight,
+			float memberLength, String startDate, String memberID, String memberPW, int days, int exerciseDays,
+			String memberGrade, String memberExerciseDiff, float memberBMI) {
+		super();
 		this.memberName = memberName;
 		this.memberGender = memberGender;
 		this.memberAge = memberAge;
-		Startweight = startweight;
+		this.startWeight = startWeight;
 		this.memberWeight = memberWeight;
 		this.memberLength = memberLength;
 		this.startDate = startDate;
 		this.memberID = memberID;
 		this.memberPW = memberPW;
+		this.days = days;
+		this.exerciseDays = exerciseDays;
+		this.memberGrade = memberGrade;
+		this.memberExerciseDiff = memberExerciseDiff;
+		this.memberBMI = memberBMI;
 	}
 
 
-
-	
 
 	public String getMemberID() {
 		return memberID;
