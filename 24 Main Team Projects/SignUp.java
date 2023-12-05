@@ -15,13 +15,19 @@ public class SignUp extends Member{ // Member의 멤버변수 가져오기
 	boolean pwrun = true; // 비밀번호 입력 반복문
 	
 	public List<Member> memberList = new ArrayList<Member>(); // ArrayList에 담기 위해 ArrayList 입력
+	Date masterDate = new Date();
+	Member masterAccount = new Member("마스터 계정", "남성", 23, 45, 45, 178, masterDate, "admin", "adminpw");
+	
+
+	
 	
 	public SignUp() {
 		
 	}
 	
 	public void SignUp1() { // Main에서 실행 시킬 메서드
-		
+		idrun = true;
+		pwrun = true;
 		System.out.println("-----회원가입-----");
 		
 		while(idrun) { // 아이디 반복문 시작
@@ -93,6 +99,7 @@ public class SignUp extends Member{ // Member의 멤버변수 가져오기
 		
 		boolean numeric = false;	// 처음에는 숫자 값, 영어 값 둘다 false로
 		boolean alpha = false;
+		boolean other = false;
 		
 		for (int i = 0; i < tempPW.length(); i++) {	// 입력 받은 tempPW 길이 만큼 반복
 			int index = tempPW.charAt(i);	// index에 예비 비밀번호 charAt i번째 문자 넣기
@@ -103,12 +110,25 @@ public class SignUp extends Member{ // Member의 멤버변수 가져오기
 			else if(index >= 65 && index <= 122) {	// 만약에 index 값이 a~Z 까지 존재 할때
 				alpha = true;	// true 넣어주기
 			}
+			else if (index < 65 && index > 57) {
+				other = true;
+			}
+			else if (index > 122) {
+				other = true;
+			}
+			else if (index < 48) {
+				other = true;
+			}
 			
 		}
 		
-		if(numeric == true && alpha == true) {	// 영어 숫자 둘다 존재할때
+		if(numeric == true && alpha == true && other == false) {	// 영어 숫자 둘다 존재할때
 			System.out.println("적합한 비밀번호 입니다.");
 			return true;	// 적합한 비밀번호 이므로 true 반환
+		}
+		else if (other == true) {
+			System.out.println("적합하지 않은 비밀번호 입니다.");
+			return false;
 		}
 		else if (numeric == true) {	// 숫자만 존재할때
 			System.out.println("영어가 들어가있지 않습니다.");
