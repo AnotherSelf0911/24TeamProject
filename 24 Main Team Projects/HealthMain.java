@@ -4,7 +4,8 @@ public class HealthMain {
 
 	public static void main(String[] args) {
 		
-        new LoginMenu2();
+        LoginMenu2 login = new LoginMenu2();
+        login.loginMenuStart();
 		
 	}
 

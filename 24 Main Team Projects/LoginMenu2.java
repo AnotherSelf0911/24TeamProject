@@ -12,13 +12,13 @@ import javax.swing.*;
 public class LoginMenu2 {
 	
 	List<Member> memberList = new ArrayList<Member>(); 
-	SignUp signUp = new SignUp();
+	SignUp2 signUp = new SignUp2();
 	Member tempMember = new Member();
-	Member adminMember;
+	Member adminMember = new Member();
 	MasterAccount admin;
 	
 	
-	public LoginMenu2() {
+	public void loginMenuStart() {
 		
 		try {
             admin = new MasterAccount();
@@ -100,7 +100,7 @@ public class LoginMenu2 {
 		
 		signUpButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new SignUp2();
+				signUp.signUpStart(memberList);
 			}
 		});
 		
