@@ -1,5 +1,6 @@
 package teamProject;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Member{
@@ -49,14 +50,45 @@ public class Member{
 		this.memberExerciseDiff = memberExerciseDiff;
 		this.memberBMI = memberBMI;
 	}
-
-
+	
+	public static float getBMI(float memberWeight, float memberLength) {
+		float tempLength = memberLength / 100;
+		float BMI = (float) memberWeight / (tempLength * tempLength);
+		
+		return BMI;
+	}
+	
+	public static int checkDays(String startDate) throws Exception {
+		
+		Date date = new Date();
+		
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd");
+		String today = sdFormat.format(date);
+		Date startD = sdFormat.parse(startDate);
+		Date endD = sdFormat.parse(today);
+		
+		long diff = startD.getTime() - endD.getTime();
+		long diffDays = diff / (24 * 60 * 60 * 1000);
+		
+		int days = (int) diffDays;
+		return days;
+	}
+	
+	public static String makeStartDate() {
+		Date date = new Date();
+		String startDate;
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd");
+		startDate = sdFormat.format(date);
+		return startDate;
+	}
+	
+	
 
 	public String getMemberID() {
 		return memberID;
 	}
 	
-
+	
 	
 	
 }
