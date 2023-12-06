@@ -1,15 +1,15 @@
 package teamProject;
 
-import java.awt.*;
+// import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
 
 public class MainMenu {
-	public MainMenu() {
+	public MainMenu(Member tempMember) {
 		
 		JFrame mainMenuFrame = new JFrame();
-		Font defaultFont = new Font("", Font.PLAIN, 14);
+		//Font defaultFont = new Font("", Font.PLAIN, 14);
 		
 		//.setBounds(x, y, 양옆, 위아래);
 		JButton memberInfoButton = new JButton("사용자 정보");

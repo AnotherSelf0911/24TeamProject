@@ -1,7 +1,8 @@
 package teamProject;
 
-import java.awt.Font;
+// import java.awt.Font;
 import java.awt.event.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.swing.*;
@@ -9,11 +10,15 @@ import javax.swing.*;
 public class SignUp2 {
 	
 	List<Member> memberList = new ArrayList<>();
-	LoginMenu2 menu;
-	Member tempMember = new Member();
+	LoginMenu2 menu = new LoginMenu2();
+	Member tempMember;
 	Member dupIDCheck;
 	String idCheck = "";
 	String pwCheck = "null";
+	
+	public SignUp2(LoginMenu2 menu) {
+        this.menu = menu;
+    }
 	
 	public void signUpStart(List<Member> memberList) {
 		
@@ -21,7 +26,7 @@ public class SignUp2 {
 		
 		JFrame signUpFrame = new JFrame("회원가입 창"); // 프레임 생성
 		
-		Font defaultFont = new Font("", Font.PLAIN, 14);
+		// Font defaultFont = new Font("", Font.PLAIN, 14);
 		
 		JLabel idLabel = new JLabel("아이디");
 		idLabel.setBounds(20, 30, 80, 30);
@@ -53,7 +58,7 @@ public class SignUp2 {
 		JLabel pwLabel = new JLabel("비밀번호 (영문 + 숫자 조합 8 ~ 16자리)");
 		pwLabel.setBounds(20, 85, 400, 30);
 		JLabel pwTextLabel = new JLabel("비밀번호");
-		pwTextLabel.setBounds(20, 125, 100, 30);
+		pwTextLabel.setBounds(20, 125, 120, 30);
 		JTextField pwTextField = new JTextField();	// 비밀번호 적는 란
 		pwTextField.setBounds(80, 130, 130, 30);
 		JLabel pwCheckLabel = new JLabel("비밀번호 재확인");
@@ -81,27 +86,40 @@ public class SignUp2 {
 		
 		
 		JLabel ageLabel = new JLabel("나이");
+		ageLabel.setBounds(20, 200, 60, 30);
 		JTextField ageTextField = new JTextField(); // 나이 적는 란
+		ageTextField.setBounds(120, 205, 130, 30);
 		
 		JLabel nameLabel = new JLabel("이름");
+		nameLabel.setBounds(20, 240, 60, 30);
 		JTextField nameTextField = new JTextField(); // 이름 적는 란
+		nameTextField.setBounds(120, 245, 130, 30);
 		
 		JLabel genderLabel = new JLabel("성별");
+		genderLabel.setBounds(20, 280, 60, 30);
 		JTextField genderTextField = new JTextField(); // 성별 적는 란
+		genderTextField.setBounds(120, 285, 130, 30);
 		
 		JLabel weightLabel = new JLabel("몸무게");
+		weightLabel.setBounds(20, 320, 80, 30);
 		JTextField weightTextField = new JTextField(); // 몸무게 적는 란
+		weightTextField.setBounds(120, 325, 130, 30);
 		
 		JLabel lengthLabel = new JLabel("키");
+		lengthLabel.setBounds(20, 360, 40, 30);
 		JTextField lengthTextField = new JTextField(); // 키 적는 란
+		lengthTextField.setBounds(120, 365, 130, 30);
 		
 		JButton signUpButton = new JButton("회원가입");	// 회원가입 버튼
-		
+		signUpButton.setBounds(145, 440, 85, 30);
 		
 		
 		signUpButton.addActionListener(new ActionListener(){	// 회원가입 버튼 눌렀을때
 			public void actionPerformed(ActionEvent e) {
-				if (!idTextField.getText().equals(dupIDCheck.getMemberID())) {	// 만약에 ID 적는 텍스트란에 있는 값과 중복확인 한 tempID값이 같지 않으면
+				if (idCheck.isBlank()) {  // 중복확인을 하지 않은 경우
+                    JOptionPane.showMessageDialog(null, "ID 중복확인을 해주세요.", "회원가입 확인", JOptionPane.ERROR_MESSAGE);
+                }
+				else if (!idTextField.getText().equals(idCheck)) {	// 만약에 ID 적는 텍스트란에 있는 값과 중복확인 한 tempID값이 같지 않으면
 					JOptionPane.showMessageDialog(null, "중복확인한 ID와 값이 같지 않습니다.", "회원가입 확인", JOptionPane.ERROR_MESSAGE);
 				}
 				else if (idTextField.getText().isBlank()) {	// ID 입력칸이 비어있을때
@@ -115,6 +133,36 @@ public class SignUp2 {
 				}
 				else if (!pwTextField.getText().equals(pwCheck)) {
 					JOptionPane.showMessageDialog(null, "적합한 비밀번호인지 확인을 하지 않았습니다.", "회원가입 확인", JOptionPane.ERROR_MESSAGE);
+				}
+				else if (ageTextField.getText().isBlank()) {
+					JOptionPane.showMessageDialog(null, "나이를 적지 않았습니다.", "회원가입 확인", JOptionPane.ERROR_MESSAGE);
+				}
+				else if (nameTextField.getText().isBlank()) {
+					JOptionPane.showMessageDialog(null, "이름을 적지 않았습니다.", "회원가입 확인", JOptionPane.ERROR_MESSAGE);
+				}
+				else if (genderTextField.getText().isBlank()) {
+					JOptionPane.showMessageDialog(null, "성별을 적지 않았습니다.", "회원가입 확인", JOptionPane.ERROR_MESSAGE);
+				}
+				else if (weightTextField.getText().isBlank()) {
+					JOptionPane.showMessageDialog(null, "몸무게를 적지 않았습니다.", "회원가입 확인", JOptionPane.ERROR_MESSAGE);
+				}
+				else if (lengthTextField.getText().isBlank()) {
+					JOptionPane.showMessageDialog(null, "키를 적지 않았습니다.", "회원가입 확인", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd");
+					Date date = new Date();
+					String startDate = sdFormat.format(date);
+					float tempWeight = Float.parseFloat(weightTextField.getText());
+					float tempLength = Float.parseFloat(lengthTextField.getText());
+					float tempBMI = (float)tempWeight / (tempLength * tempLength);
+					tempMember = new Member(nameTextField.getText(), genderTextField.getText(), Integer.parseInt(ageTextField.getText()), 
+							tempWeight, tempWeight, tempLength, startDate, idTextField.getText(), pwTextField.getText(), 1, 0, "", "", tempBMI);
+					
+					memberList.add(tempMember);
+					menu.setMemberList(memberList);
+					signUpFrame.dispose();
+					JOptionPane.showMessageDialog(null, "회원가입에 성공했습니다.", "회원가입 확인", JOptionPane.PLAIN_MESSAGE);
 				}
 				
 			}
@@ -131,6 +179,18 @@ public class SignUp2 {
 		signUpFrame.add(pwCheckLabel);
 		signUpFrame.add(pwCheckTextField);
 		signUpFrame.add(pwCheckButton);
+		signUpFrame.add(ageLabel);
+		signUpFrame.add(ageTextField);
+		signUpFrame.add(nameLabel);
+		signUpFrame.add(nameTextField);
+		signUpFrame.add(genderLabel);
+		signUpFrame.add(genderTextField);
+		signUpFrame.add(weightLabel);
+		signUpFrame.add(weightTextField);
+		signUpFrame.add(lengthLabel);
+		signUpFrame.add(lengthTextField);
+		signUpFrame.add(signUpButton);
+		
 		
 		signUpFrame.setSize(400, 550);
 		signUpFrame.setVisible(true);
@@ -192,5 +252,6 @@ public class SignUp2 {
 			return false;	// false 반환
 		}
 	} // getType();
+	
 	
 }

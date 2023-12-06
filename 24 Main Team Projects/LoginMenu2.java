@@ -12,7 +12,7 @@ import javax.swing.*;
 public class LoginMenu2 {
 	
 	List<Member> memberList = new ArrayList<Member>(); 
-	SignUp2 signUp = new SignUp2();
+	SignUp2 signUp;
 	Member tempMember = new Member();
 	Member adminMember = new Member();
 	MasterAccount admin;
@@ -21,6 +21,7 @@ public class LoginMenu2 {
 	public void loginMenuStart() {
 		
 		try {
+			signUp = new SignUp2(this);
             admin = new MasterAccount();
         } catch (Exception e) {
             // 예외 처리 로직 추가
@@ -80,13 +81,13 @@ public class LoginMenu2 {
 				String tempPW = new String(tempPWCharArray);
 				
 				if(masterLoginCheck(tempID, tempPW) == true) {
-					new MainMenu();
+					new MainMenu(tempMember);
 					JOptionPane.showMessageDialog(null, "마스터 계정 로그인 성공", "로그인 확인", JOptionPane.PLAIN_MESSAGE);
 					loginFrame.dispose();
 				}
 				else {
 					if(loginCheck(tempID, tempPW) == true) {
-						new MainMenu();
+						new MainMenu(tempMember);
 						JOptionPane.showMessageDialog(null, "로그인 성공", "로그인 확인", JOptionPane.PLAIN_MESSAGE);
 						loginFrame.dispose();
 					}
@@ -111,7 +112,7 @@ public class LoginMenu2 {
 		while(checkMember.hasNext()) {
 			Member member = checkMember.next();
 			if(member.memberID.equals(tempID) && member.memberPW.equals(tempPW)) {
-				tempMember = checkMember.next();
+				tempMember = member;
 				return true;
 			}
 		}
@@ -125,5 +126,10 @@ public class LoginMenu2 {
 		}
 		return false;
 	}
+
+	public void setMemberList(List<Member> memberList) {
+		this.memberList = memberList;
+	}
+	
 	
 }
