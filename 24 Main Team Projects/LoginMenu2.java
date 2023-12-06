@@ -11,10 +11,10 @@ import javax.swing.*;
 
 public class LoginMenu2 {
 	
-	List<Member> memberList = new ArrayList<Member>(); 
+	static List<Member> memberList = new ArrayList<Member>(); 
 	SignUp2 signUp;
-	Member tempMember = new Member();
-	Member adminMember = new Member();
+	static Member tempMember = new Member();
+	static Member adminMember = new Member();
 	MasterAccount admin;
 	
 	
@@ -81,13 +81,13 @@ public class LoginMenu2 {
 				String tempPW = new String(tempPWCharArray);
 				
 				if(masterLoginCheck(tempID, tempPW) == true) {
-					new MainMenu(tempMember);
+					new MainMenu();
 					JOptionPane.showMessageDialog(null, "마스터 계정 로그인 성공", "로그인 확인", JOptionPane.PLAIN_MESSAGE);
 					loginFrame.dispose();
 				}
 				else {
 					if(loginCheck(tempID, tempPW) == true) {
-						new MainMenu(tempMember);
+						new MainMenu();
 						JOptionPane.showMessageDialog(null, "로그인 성공", "로그인 확인", JOptionPane.PLAIN_MESSAGE);
 						loginFrame.dispose();
 					}
@@ -101,14 +101,14 @@ public class LoginMenu2 {
 		
 		signUpButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				signUp.signUpStart(memberList);
+				signUp.signUpStart();
 			}
 		});
 		
 	}
 	
 	boolean loginCheck(String tempID, String tempPW) {
-		Iterator<Member> checkMember = signUp.memberList.iterator();
+		Iterator<Member> checkMember = memberList.iterator();
 		while(checkMember.hasNext()) {
 			Member member = checkMember.next();
 			if(member.memberID.equals(tempID) && member.memberPW.equals(tempPW)) {
@@ -127,9 +127,10 @@ public class LoginMenu2 {
 		return false;
 	}
 
-	public void setMemberList(List<Member> memberList) {
-		this.memberList = memberList;
-	}
+	/*
+	 * public void setMemberList(List<Member> memberList) { this.memberList =
+	 * memberList; }
+	 */
 	
 	
 }

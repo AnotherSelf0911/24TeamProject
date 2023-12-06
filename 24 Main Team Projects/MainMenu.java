@@ -6,7 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class MainMenu {
-	public MainMenu(Member tempMember) {
+	public MainMenu() {
 		
 		JFrame mainMenuFrame = new JFrame();
 		//Font defaultFont = new Font("", Font.PLAIN, 14);

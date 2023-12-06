@@ -1,5 +1,6 @@
 package teamProject;
 
+import java.awt.Container;
 // import java.awt.Font;
 import java.awt.event.*;
 import java.text.SimpleDateFormat;
@@ -7,11 +8,11 @@ import java.util.*;
 
 import javax.swing.*;
 
-public class SignUp2 {
+public class SignUp2 extends LoginMenu2 {
 	
-	List<Member> memberList = new ArrayList<>();
+	//List<Member> memberList = new ArrayList<>();
 	LoginMenu2 menu = new LoginMenu2();
-	Member tempMember;
+	Member checkMember;
 	Member dupIDCheck;
 	String idCheck = "";
 	String pwCheck = "null";
@@ -20,9 +21,7 @@ public class SignUp2 {
         this.menu = menu;
     }
 	
-	public void signUpStart(List<Member> memberList) {
-		
-		this.memberList = memberList;
+	public void signUpStart() {
 		
 		JFrame signUpFrame = new JFrame("회원가입 창"); // 프레임 생성
 		
@@ -156,11 +155,10 @@ public class SignUp2 {
 					float tempWeight = Float.parseFloat(weightTextField.getText());
 					float tempLength = Float.parseFloat(lengthTextField.getText());
 					float tempBMI = (float)tempWeight / (tempLength * tempLength);
-					tempMember = new Member(nameTextField.getText(), genderTextField.getText(), Integer.parseInt(ageTextField.getText()), 
+					checkMember = new Member(nameTextField.getText(), genderTextField.getText(), Integer.parseInt(ageTextField.getText()), 
 							tempWeight, tempWeight, tempLength, startDate, idTextField.getText(), pwTextField.getText(), 1, 0, "", "", tempBMI);
 					
-					memberList.add(tempMember);
-					menu.setMemberList(memberList);
+					memberList.add(checkMember);
 					signUpFrame.dispose();
 					JOptionPane.showMessageDialog(null, "회원가입에 성공했습니다.", "회원가입 확인", JOptionPane.PLAIN_MESSAGE);
 				}
