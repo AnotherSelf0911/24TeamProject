@@ -1,39 +1,52 @@
-package teamProject;
+package data;
 
+import java.awt.Font;
 // import java.awt.Font;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.Iterator;
 
-import javax.swing.*;
+import javax.swing.AbstractButton;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
-public class SignUp2 extends LoginMenu2 {
+import de.LoginMenu2;
+
+public class SignUp2 {
 	
 	//List<Member> memberList = new ArrayList<>();
-	LoginMenu2 menu = new LoginMenu2();
 	Member checkMember;
 	Member dupIDCheck;
 	String idCheck = "";
 	String pwCheck = "null";
 	
-	public SignUp2(LoginMenu2 menu) {
-        this.menu = menu;
+	public SignUp2() {
+		signUpStart();
     }
 	
 	public void signUpStart() {
 		
 		JFrame signUpFrame = new JFrame("회원가입 창"); // 프레임 생성
-		
-		// Font defaultFont = new Font("", Font.PLAIN, 14);
+		signUpFrame.setBounds(0, 0, 533, 950);
+		signUpFrame.getContentPane().setLayout(null);
+		signUpFrame.setVisible(true);
 		
 		JLabel idLabel = new JLabel("아이디");
-		idLabel.setBounds(20, 30, 80, 30);
+		idLabel.setBounds(80, 181, 80, 30);
+		idLabel.setFont(new Font("배달의민족 도현", Font.PLAIN, 20));
 		
-		JTextField idTextField = new JTextField();	// ID 적는 란
-		idTextField.setBounds(60, 36, 130, 30);
+		JTextField idTextField = new JTextField();
+		idTextField.setBounds(180, 182, 130, 30);
 		
 		JButton idDupCheck = new JButton("ID 중복확인");
-		idDupCheck.setBounds(240, 36, 100, 30);
+		idDupCheck.setFont(new Font("배달의민족 도현", Font.PLAIN, 10));
+		idDupCheck.setBounds(322, 181, 100, 30);
 		
 		idDupCheck.addActionListener(new ActionListener() {
 			
@@ -54,18 +67,22 @@ public class SignUp2 extends LoginMenu2 {
 		
 	
 		JLabel pwLabel = new JLabel("비밀번호 (영문 + 숫자 조합 8 ~ 16자리)");
-		pwLabel.setBounds(20, 85, 400, 30);
+		pwLabel.setBounds(80, 216, 400, 30);
+		pwLabel.setFont(new Font("배달의민족 도현", Font.PLAIN, 20));
 		JLabel pwTextLabel = new JLabel("비밀번호");
-		pwTextLabel.setBounds(20, 125, 120, 30);
-		JTextField pwTextField = new JTextField();	// 비밀번호 적는 란
-		pwTextField.setBounds(80, 130, 130, 30);
+		pwTextLabel.setBounds(80, 256, 120, 30);
+		pwTextLabel.setFont(new Font("배달의민족 도현", Font.PLAIN, 20));
+		JTextField pwTextField = new JTextField();
+		pwTextField.setBounds(180, 257, 130, 30);
 		JLabel pwCheckLabel = new JLabel("비밀번호 재확인");
-		pwCheckLabel.setBounds(20, 165, 200, 30);
-		JTextField pwCheckTextField = new JTextField();	// 비밀번호 재확인
-		pwCheckTextField.setBounds(120, 170, 130, 30);
+		pwCheckLabel.setFont(new Font("배달의민족 도현", Font.PLAIN,20));
+		pwCheckLabel.setBounds(80, 296, 150, 30);
+		pwCheckLabel.setFont(new Font("배달의민족 도현", Font.PLAIN, 20));
+		JTextField pwCheckTextField = new JTextField();
+		pwCheckTextField.setBounds(242, 297, 130, 30);
 		JButton pwCheckButton = new JButton("비밀번호 확인");
-		pwCheckButton.setBounds(250, 130, 110, 30);
-		
+		pwCheckButton.setFont(new Font("배달의민족 도현", Font.PLAIN,10));		
+		pwCheckButton.setBounds(322, 257, 110, 30);
 		
 		pwCheckButton.addActionListener(new ActionListener() {
 			
@@ -84,32 +101,39 @@ public class SignUp2 extends LoginMenu2 {
 		
 		
 		JLabel ageLabel = new JLabel("나이");
-		ageLabel.setBounds(20, 200, 60, 30);
-		JTextField ageTextField = new JTextField(); // 나이 적는 란
-		ageTextField.setBounds(120, 205, 130, 30);
+		ageLabel.setBounds(80, 331, 60, 30);
+		ageLabel.setFont(new Font("배달의민족 도현", Font.PLAIN, 20));
+		JTextField ageTextField = new JTextField();
+		ageTextField.setBounds(180, 336, 130, 30);
 		
 		JLabel nameLabel = new JLabel("이름");
-		nameLabel.setBounds(20, 240, 60, 30);
-		JTextField nameTextField = new JTextField(); // 이름 적는 란
-		nameTextField.setBounds(120, 245, 130, 30);
+		nameLabel.setBounds(80, 371, 60, 30);
+		nameLabel.setFont(new Font("배달의민족 도현", Font.PLAIN, 20));
+		JTextField nameTextField = new JTextField();
+		nameTextField.setBounds(180, 376, 130, 30);
 		
 		JLabel genderLabel = new JLabel("성별");
-		genderLabel.setBounds(20, 280, 60, 30);
-		JTextField genderTextField = new JTextField(); // 성별 적는 란
-		genderTextField.setBounds(120, 285, 130, 30);
+		genderLabel.setBounds(80, 411, 60, 30);
+		genderLabel.setFont(new Font("배달의민족 도현", Font.PLAIN, 20));
+		JTextField genderTextField = new JTextField();
+		genderTextField.setBounds(180, 416, 130, 30);
 		
 		JLabel weightLabel = new JLabel("몸무게");
-		weightLabel.setBounds(20, 320, 80, 30);
-		JTextField weightTextField = new JTextField(); // 몸무게 적는 란
-		weightTextField.setBounds(120, 325, 130, 30);
+		weightLabel.setBounds(80, 451, 80, 30);
+		weightLabel.setFont(new Font("배달의민족 도현", Font.PLAIN, 20));
+		JTextField weightTextField = new JTextField();
+		weightTextField.setBounds(180, 456, 130, 30);
 		
 		JLabel lengthLabel = new JLabel("키");
-		lengthLabel.setBounds(20, 360, 40, 30);
-		JTextField lengthTextField = new JTextField(); // 키 적는 란
-		lengthTextField.setBounds(120, 365, 130, 30);
+		lengthLabel.setBounds(80, 491, 40, 30);
+		lengthLabel.setFont(new Font("배달의민족 도현", Font.PLAIN, 20));
+		JTextField lengthTextField = new JTextField();
+		lengthTextField.setBounds(180, 496, 130, 30);
 		
-		JButton signUpButton = new JButton("회원가입");	// 회원가입 버튼
-		signUpButton.setBounds(145, 440, 85, 30);
+		JButton signUpButton = new JButton("회원가입");
+		signUpButton.setFont(new Font("배달의민족 도현", Font.PLAIN,15));
+		signUpButton.setBounds(205, 571, 100, 30);
+		
 		
 		
 		signUpButton.addActionListener(new ActionListener(){	// 회원가입 버튼 눌렀을때
@@ -157,7 +181,7 @@ public class SignUp2 extends LoginMenu2 {
 					checkMember = new Member(nameTextField.getText(), genderTextField.getText(), Integer.parseInt(ageTextField.getText()), 
 							tempWeight, tempWeight, tempLength, startDate, idTextField.getText(), pwTextField.getText(), 1, 0, "", "", tempBMI);
 					
-					memberList.add(checkMember);
+					LoginMenu2.memberList.add(checkMember);
 					signUpFrame.dispose();
 					JOptionPane.showMessageDialog(null, "회원가입에 성공했습니다.", "회원가입 확인", JOptionPane.PLAIN_MESSAGE);
 				}
@@ -165,37 +189,49 @@ public class SignUp2 extends LoginMenu2 {
 			}
 		});
 		
-		signUpFrame.setLayout(null);
+		signUpFrame.getContentPane().setLayout(null);
 		
-		signUpFrame.add(idLabel);
-		signUpFrame.add(idTextField);
-		signUpFrame.add(idDupCheck);
-		signUpFrame.add(pwLabel);
-		signUpFrame.add(pwTextLabel);
-		signUpFrame.add(pwTextField);
-		signUpFrame.add(pwCheckLabel);
-		signUpFrame.add(pwCheckTextField);
-		signUpFrame.add(pwCheckButton);
-		signUpFrame.add(ageLabel);
-		signUpFrame.add(ageTextField);
-		signUpFrame.add(nameLabel);
-		signUpFrame.add(nameTextField);
-		signUpFrame.add(genderLabel);
-		signUpFrame.add(genderTextField);
-		signUpFrame.add(weightLabel);
-		signUpFrame.add(weightTextField);
-		signUpFrame.add(lengthLabel);
-		signUpFrame.add(lengthTextField);
-		signUpFrame.add(signUpButton);
+		signUpFrame.getContentPane().add(idLabel);
+		signUpFrame.getContentPane().add(idTextField);
+		signUpFrame.getContentPane().add(idDupCheck);
+		signUpFrame.getContentPane().add(pwLabel);
+		signUpFrame.getContentPane().add(pwTextLabel);
+		signUpFrame.getContentPane().add(pwTextField);
+		signUpFrame.getContentPane().add(pwCheckLabel);
+		signUpFrame.getContentPane().add(pwCheckTextField);
+		signUpFrame.getContentPane().add(pwCheckButton);
+		signUpFrame.getContentPane().add(ageLabel);
+		signUpFrame.getContentPane().add(ageTextField);
+		signUpFrame.getContentPane().add(nameLabel);
+		signUpFrame.getContentPane().add(nameTextField);
+		signUpFrame.getContentPane().add(genderLabel);
+		signUpFrame.getContentPane().add(genderTextField);
+		signUpFrame.getContentPane().add(weightLabel);
+		signUpFrame.getContentPane().add(weightTextField);
+		signUpFrame.getContentPane().add(lengthLabel);
+		signUpFrame.getContentPane().add(lengthTextField);
+		signUpFrame.getContentPane().add(signUpButton);
 		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(SignUp2.class.getResource("/image/signupbackground.png")));
+		lblNewLabel.setBounds(-6, 0, 533, 950);
+		signUpFrame.getContentPane().add(lblNewLabel);
 		
-		signUpFrame.setSize(400, 550);
+		JLabel frameimg = new JLabel();
+		frameimg.setBounds(-16, 0, 533, 950);
+		frameimg.setIcon(new ImageIcon("image/signupbackground.png"));
+		
 		signUpFrame.setVisible(true);
 	}
 	
 	
+	private AbstractButton getContentPane() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	boolean id_DupCheck(String tempID) {
-		Iterator<Member> id = memberList.iterator();
+		Iterator<Member> id = LoginMenu2.memberList.iterator();
 		while(id.hasNext()) {
 			dupIDCheck = id.next();
 			if(dupIDCheck.getMemberID().equals(tempID)) {
@@ -249,6 +285,4 @@ public class SignUp2 extends LoginMenu2 {
 			return false;	// false 반환
 		}
 	} // getType();
-	
-	
 }
